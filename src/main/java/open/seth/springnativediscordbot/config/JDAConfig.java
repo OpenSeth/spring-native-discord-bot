@@ -57,6 +57,7 @@ public class JDAConfig {
     }
 
     private void registerSlashCommandsWithDiscord(JDA jdaClient) {
+        //
         slashCommands.forEach(slashCommand -> {
             jdaClient.updateCommands().addCommands(
                     Commands.slash(

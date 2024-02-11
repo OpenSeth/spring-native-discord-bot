@@ -19,6 +19,8 @@ public class SlashCommandListener extends ListenerAdapter {
 
     @PostConstruct
     public void setupCommandMap(){
+        //We'll put all of our commands in a map with their name being the key. This will
+        //allow us to quickly grab the right command handler for the given user command
         slashCommands.forEach(slashCommand -> {
             mapOfCommands.put(slashCommand.getSlashCommandName(), slashCommand);
         });
@@ -26,9 +28,10 @@ public class SlashCommandListener extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+        //grab the right handler for the given slash command name
         SlashCommand slashCommandHandler = mapOfCommands.get(event.getName());
         if(null != slashCommandHandler){
             slashCommandHandler.handleSlashCommand(event);
-        }
+        }//TODO provide an error message when we can't find a handler
     }
 }
