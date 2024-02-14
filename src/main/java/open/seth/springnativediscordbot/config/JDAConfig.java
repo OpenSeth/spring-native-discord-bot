@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import open.seth.springnativediscordbot.commands.SlashCommand;
@@ -12,6 +14,7 @@ import open.seth.springnativediscordbot.listener.SlashCommandListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +27,7 @@ import java.util.List;
 public class JDAConfig {
     private final List<SlashCommand> slashCommands;
     private final SlashCommandListener slashCommandListener;
+
     @Bean
     public JDA jdaClient(){
         JDABuilder builder = JDABuilder.createDefault("token goes here");
@@ -57,13 +61,16 @@ public class JDAConfig {
     }
 
     private void registerSlashCommandsWithDiscord(JDA jdaClient) {
-        //
+        //convert from our command model to the JDA command data model
+        ArrayList<CommandData> commandsToRegister = new ArrayList<>();
         slashCommands.forEach(slashCommand -> {
-            jdaClient.updateCommands().addCommands(
-                    Commands.slash(
-                            slashCommand.getSlashCommandName(),
+            commandsToRegister.add(Commands.slash(slashCommand.getSlashCommandName(),
                             slashCommand.getSlashCommandDescription())
-            ).submit();
+                    .addOptions(slashCommand.getSlashCommandOptions())
+            );
         });
+
+        //register the slash commands with discord
+        jdaClient.updateCommands().addCommands(commandsToRegister).submit();
     }
 }

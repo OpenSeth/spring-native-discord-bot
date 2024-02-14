@@ -20,11 +20,13 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation("net.dv8tion:JDA:5.0.0-beta.20")
+    implementation 'dev.arbjerg:lavaplayer:2.1.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
