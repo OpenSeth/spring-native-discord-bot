@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import open.seth.springnativediscordbot.commands.SlashCommand;
+import open.seth.springnativediscordbot.listener.MessageListener;
 import open.seth.springnativediscordbot.listener.SlashCommandListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,10 +28,11 @@ import java.util.List;
 public class JDAConfig {
     private final List<SlashCommand> slashCommands;
     private final SlashCommandListener slashCommandListener;
+    private final MessageListener messageListener;
 
     @Bean
-    public JDA jdaClient(){
-        JDABuilder builder = JDABuilder.createDefault("token goes here");
+    public JDA jdaClient() {
+        JDABuilder builder = JDABuilder.createDefault("");
         setCacheOptions(builder);
         setDeleteOptions(builder);
         setBotStatus(builder);
@@ -44,7 +46,7 @@ public class JDAConfig {
     }
 
     private void setListeners(JDABuilder builder) {
-        builder.addEventListeners(slashCommandListener);
+        builder.addEventListeners(slashCommandListener, messageListener);
     }
 
     private void setBotStatus(JDABuilder builder) {
