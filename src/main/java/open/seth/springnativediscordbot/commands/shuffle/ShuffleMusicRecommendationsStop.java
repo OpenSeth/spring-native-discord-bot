@@ -1,4 +1,4 @@
-package open.seth.springnativediscordbot.commands;
+package open.seth.springnativediscordbot.commands.shuffle;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import lombok.NoArgsConstructor;
@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import open.seth.springnativediscordbot.audio.AudioScheduler;
+import open.seth.springnativediscordbot.commands.SlashCommand;
 import org.springframework.stereotype.Component;
 
 import static open.seth.springnativediscordbot.commands.constants.Constants.*;

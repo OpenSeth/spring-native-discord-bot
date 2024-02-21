@@ -22,6 +22,7 @@ public class AudioConfig {
     @Bean
     public AudioPlayer audioPlayer(AudioPlayerManager audioPlayerManager){
         AudioPlayer audioPlayer = audioPlayerManager.createPlayer();
+        audioPlayer.setVolume(80);
         return audioPlayer;
     }
 }
