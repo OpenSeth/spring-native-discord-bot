@@ -11,9 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class AudioConfig {
-//    private final AudioScheduler audioScheduler;
-    //currently digesting how to use the audio player library
-    //https://github.com/lavalink-devs/lavaplayer#usage
 
     @Bean
     public AudioPlayerManager audioPlayerManager(){
@@ -25,7 +22,6 @@ public class AudioConfig {
     @Bean
     public AudioPlayer audioPlayer(AudioPlayerManager audioPlayerManager){
         AudioPlayer audioPlayer = audioPlayerManager.createPlayer();
-//        audioPlayer.addListener(audioScheduler);
         return audioPlayer;
     }
 }

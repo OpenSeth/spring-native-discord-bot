@@ -1,7 +1,6 @@
 package open.seth.springnativediscordbot.audio;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
-import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrame;
 import com.sedmelluq.discord.lavaplayer.track.playback.MutableAudioFrame;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.audio.AudioSendHandler;
@@ -13,7 +12,7 @@ import java.nio.ByteBuffer;
 
 @Component
 @RequiredArgsConstructor
-public class AudioPlayerSendHandlerImpl implements AudioSendHandler {
+public class AudioPlayerSendHandler implements AudioSendHandler {
     private final AudioPlayer audioPlayer;
     private final ByteBuffer buffer;
     private final MutableAudioFrame frame;
@@ -22,7 +21,7 @@ public class AudioPlayerSendHandlerImpl implements AudioSendHandler {
      * @param audioPlayer Audio player to wrap.
      */
     @Autowired
-    public AudioPlayerSendHandlerImpl(AudioPlayer audioPlayer) {
+    public AudioPlayerSendHandler(AudioPlayer audioPlayer) {
         this.audioPlayer = audioPlayer;
         this.buffer = ByteBuffer.allocate(1024);
         this.frame = new MutableAudioFrame();
