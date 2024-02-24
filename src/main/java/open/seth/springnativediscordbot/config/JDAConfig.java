@@ -73,6 +73,6 @@ public class JDAConfig {
         });
 
         //register the slash commands with discord
-        jdaClient.updateCommands().addCommands(commandsToRegister).submit();
+        jdaClient.updateCommands().addCommands(commandsToRegister).queue();
     }
 }

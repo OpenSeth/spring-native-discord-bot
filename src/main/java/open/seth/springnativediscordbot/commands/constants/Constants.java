@@ -15,4 +15,6 @@ public class Constants {
 
     public static final String THIS_IS_BEANS_GIF_NAME = "thisisbeans";
     public static final String THIS_IS_BEANS_GIF_DESC = "This is food, this is beans";
+
+    public static final String ERROR_GUILD_FAILURE = "Sorry. Apparently I can't figure out what server I'm on.";
 }

@@ -14,11 +14,13 @@ import static open.seth.springnativediscordbot.commands.constants.Constants.*;
 @RequiredArgsConstructor
 public class ShuffleMusicRecommendationsSkip implements SlashCommand {
     private final AudioScheduler audioScheduler;
+    private final ShuffleHelper shuffleHelper;
 
     @Override
     public void handleSlashCommand(SlashCommandInteractionEvent event) {
+        shuffleHelper.acknowledgeCommand(event);
         audioScheduler.nextTrack();
-        event.getInteraction();
+        event.getHook().sendMessage(audioScheduler.getCurrentTrack() + " is now playing").queue();
     }
 
     @Override

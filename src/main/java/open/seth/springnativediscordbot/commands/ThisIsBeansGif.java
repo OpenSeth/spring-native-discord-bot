@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import static open.seth.springnativediscordbot.commands.constants.Constants.THIS_IS_BEANS_GIF_DESC;
 import static open.seth.springnativediscordbot.commands.constants.Constants.THIS_IS_BEANS_GIF_NAME;
@@ -26,7 +27,7 @@ public class ThisIsBeansGif implements SlashCommand {
     public void handleSlashCommand(SlashCommandInteractionEvent event) {
         boolean isObnoxious = determineHowObnoxious(event);
         String beansGifReply = buildReply(isObnoxious);
-        event.reply(beansGifReply).submit();
+        event.reply(beansGifReply).queue();
 
     }
 
@@ -52,7 +53,7 @@ public class ThisIsBeansGif implements SlashCommand {
 
     @Override
     public Collection<? extends OptionData> getSlashCommandOptions() {
-        OptionData beanLevelData = new OptionData(OptionType.BOOLEAN, BEAN_FRANTIC_MODE, BEAN_FRANTIC_MODE_DESC);
-        return Arrays.asList(beanLevelData);
+        OptionData beanCommandOptions = new OptionData(OptionType.BOOLEAN, BEAN_FRANTIC_MODE, BEAN_FRANTIC_MODE_DESC);
+        return List.of(beanCommandOptions);
     }
 }

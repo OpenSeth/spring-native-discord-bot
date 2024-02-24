@@ -28,6 +28,14 @@ public class AudioScheduler extends AudioEventAdapter {
         }
     }
 
+    public String getCurrentTrack(){
+        if(null !=queue.peek()){
+            return queue.peek().getInfo().title;
+        } else{
+            return "Nothing in the queue!";
+        }
+    }
+
     @Override
     public void onPlayerPause(AudioPlayer player) {
         // Player was paused
@@ -47,6 +55,7 @@ public class AudioScheduler extends AudioEventAdapter {
     public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
         if (endReason.mayStartNext) {
             // Start next track
+            player.startTrack(queue.poll(), false);
         }
 
         // endReason == FINISHED: A track finished or died by an exception (mayStartNext = true).

@@ -19,7 +19,7 @@ public class ShuffleMusicRecommendationsStop implements SlashCommand {
     public void handleSlashCommand(SlashCommandInteractionEvent event) {
         audioPlayer.stopTrack();
         event.getGuild().getAudioManager().closeAudioConnection();
-        event.getChannel().sendMessage("~Record scratch~ " + event.getInteraction().getUser().getName() + " turned off the music shuffle").submit();
+        event.reply("~Record scratch~ " + event.getInteraction().getUser().getName() + " turned off the music shuffle").queue();
     }
 
     @Override

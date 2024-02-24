@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 
-//I'd really love to make this class a reusable singleton, but JDA makes it difficult to so given its design of this interface that we must implement
+//I'd really love to make this class a reusable singleton, but JDA makes it difficult to that given its design of this interface that we must implement
 public class AudioLoadResultHandler implements com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler {
     private SlashCommandInteractionEvent event;
     private AudioScheduler audioScheduler;
@@ -23,7 +23,7 @@ public class AudioLoadResultHandler implements com.sedmelluq.discord.lavaplayer.
     }
     @Override
     public void trackLoaded(AudioTrack track) {
-        event.getChannel().sendMessage("Adding to queue " + track.getInfo().title).submit();
+        event.getChannel().sendMessage("Adding to queue " + track.getInfo().title).queue();
         play(channel.getGuild(), track);
     }
 
@@ -35,19 +35,19 @@ public class AudioLoadResultHandler implements com.sedmelluq.discord.lavaplayer.
             firstTrack = playlist.getTracks().get(0);
         }
 
-        event.getChannel().sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").submit();
+        event.getChannel().sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
 
         play(channel.getGuild(), firstTrack);
     }
 
     @Override
     public void noMatches() {
-        event.getChannel().sendMessage("Nothing found by " + track).submit();
+        event.getChannel().sendMessage("Nothing found by " + track).queue();
     }
 
     @Override
     public void loadFailed(FriendlyException exception) {
-        event.getChannel().sendMessage("Could not play: " + exception.getMessage()).submit();
+        event.getChannel().sendMessage("Could not play: " + exception.getMessage()).queue();
     }
 
     private void play(Guild guild, AudioTrack track) {
