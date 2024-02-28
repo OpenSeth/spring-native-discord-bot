@@ -1,4 +1,4 @@
-package open.seth.springnativediscordbot.commands.shuffle;
+package open.seth.springnativediscordbot.commands.music.recommendations.helper;
 
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.audio.AudioSendHandler;
@@ -9,18 +9,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ShuffleHelper {
-    public static final String VOICE_CHANNEL_NAME = "Music Recs Shuffle";
+public class MusicHelper {
+    public static final String MUSIC_RECS_VOICE_CHANNEL_ID = "1207505423486423090";
     private final AudioSendHandler audioSendingHandler;
 
     public VoiceChannel setupAudioForVoiceChannel(SlashCommandInteractionEvent event) {
         Guild guild = event.getGuild();
-        VoiceChannel musicRecsShuffleChannel = guild.getVoiceChannelsByName(VOICE_CHANNEL_NAME, true).getFirst();
+        VoiceChannel musicRecsVoiceChannel = guild.getVoiceChannelById(MUSIC_RECS_VOICE_CHANNEL_ID);
         if (!event.getGuild().getAudioManager().isConnected()){
-            guild.getAudioManager().openAudioConnection(musicRecsShuffleChannel);
+            guild.getAudioManager().openAudioConnection(musicRecsVoiceChannel);
             guild.getAudioManager().setSendingHandler(audioSendingHandler);
         }
-        return musicRecsShuffleChannel;
+        return musicRecsVoiceChannel;
     }
 
     public void acknowledgeCommand(SlashCommandInteractionEvent event){

@@ -15,7 +15,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 @RequiredArgsConstructor
 public class AudioScheduler extends AudioEventAdapter {
     private final AudioPlayer player;
-    private final ArrayBlockingQueue<AudioTrack> queue = new ArrayBlockingQueue<>(20);
+    private final ArrayBlockingQueue<AudioTrack> queue = new ArrayBlockingQueue<>(100);
 
     @PostConstruct
     public void postConstruct(){
@@ -32,7 +32,7 @@ public class AudioScheduler extends AudioEventAdapter {
         if(null !=queue.peek()){
             return queue.peek().getInfo().title;
         } else{
-            return "Nothing in the queue!";
+            return null;
         }
     }
 
