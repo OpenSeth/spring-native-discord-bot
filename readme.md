@@ -14,7 +14,7 @@ This project is not complete, and as freetime allows I will add more functionali
 ### Learning Objectives
 * Get exposure to Spring Native
 * Get exposure to Gradle
-* Get exposure to a Discord Library. I ended up picking JSA
+* Get exposure to a Discord Library. I ended up picking JDA
 * Get more exposure to docker (I love docker) and more specifically in the context of how Spring Native uses it.
 * Get exposure to Java 21
 * Host this bot on a raspberry pi using Portainer (cheap self hosting)
