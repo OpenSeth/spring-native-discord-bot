@@ -23,6 +23,12 @@ This project is not complete, and as freetime allows I will add more functionali
 ### Techs Used
 Java 21, Spring Boot, Spring Native, Gradle, Docker, JDA, Discord, LavaPlayer
 
+### How To Build
+```
+gradle bootBuildImage
+```
+This should automatically connect with your local docker and build an image and container for you. 
+
 ### Lessons Learned
 * Spring Native is FAST!
 * JDA is a really neat library. Its amazing they can provide so much abstraction. Really everything you do to interact with discord via their REST API, but you never interact with RestTemplate or WebClient. They have clever solutions for blocking and non-blocking calls to the discord API
