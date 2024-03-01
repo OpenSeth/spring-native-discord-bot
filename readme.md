@@ -37,6 +37,7 @@ This should automatically connect with your local docker and build an image and 
 * The discord API has its limitations. I originally wanted to create shuffle functionality, but given how their API works, I'd have to parse an entire text channel and then randomly pick what I queried. This is incredibly time consuming and wasteful. Long term solutions would be to log that info in a database or use clever caching to drive shuffle behavior. That's out of scope for me for now.
 
 ### Disclaimers
+* After I added JDA to this project, it broke Spring AOT. I'm digging through how to setup reflection hints to make GraalVM happy, but features are still experimental and documentation is limited. The project runs fine as a fat jar.
 * This will never be a production application or framework. So it is not backed with unit tests or integration tests. If I got serious about what I'm writing here, I would go to that level of effort. This is just for fun.
 * This code is highly specific to the structure of my discord server and would need to be heavily modified to use in other discord servers.
 * This code is always changing and it is not 100% ironed out. You can probably find a way to break this bot.
