@@ -11,7 +11,6 @@ import open.seth.springnativediscordbot.audio.AudioLoadResultHandler;
 import open.seth.springnativediscordbot.audio.AudioScheduler;
 import open.seth.springnativediscordbot.commands.SlashCommand;
 import open.seth.springnativediscordbot.commands.music.recommendations.helper.MusicHelper;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -49,7 +48,7 @@ public class MusicRecommendationsRequest implements SlashCommand {
     }
 
     private static boolean isTrackURLProvided(OptionMapping option) {
-        return null != option && StringUtils.isNotBlank(option.getAsString());
+        return null != option && !option.getAsString().isBlank();
     }
 
     @Override

@@ -1,8 +1,18 @@
+settings.gradle
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = uri("https://repo.spring.io/ui/native/milestone/") }
+        mavenLocal()
+    }
+}
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.2'
     id 'io.spring.dependency-management' version '1.1.4'
-    id 'org.graalvm.buildtools.native' version '0.9.28'
+    id 'org.graalvm.buildtools.native' version '0.10.1'
+    id 'org.springframework.experimental.aot' version '0.12.2'
 }
 
 group = 'open.seth'
@@ -21,16 +31,24 @@ configurations {
 repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
+    maven { url = uri("https://repo.spring.io/release") }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation("net.dv8tion:JDA:5.0.0-beta.20")
     implementation 'dev.arbjerg:lavaplayer:2.1.0'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    runtimeOnly group: 'org.springframework.experimental.aot', name: 'org.springframework.experimental.aot.gradle.plugin', version: '0.12.2', ext: 'pom'
+
+}
+
+bootBuildImage {
+    environment = [
+            "BP_NATIVE_IMAGE_BUILD_ARGUMENTS": "--initialize-at-build-time=org.apache.commons.logging.LogFactory"
+    ]
 }
 
 tasks.named('test') {
