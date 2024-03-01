@@ -14,7 +14,7 @@ This project is not complete, and as freetime allows I will add more functionali
 ### Learning Objectives
 * Get exposure to Spring Native
 * Get exposure to Gradle
-* Get exposure to a Discord Library. I ended up picking JSA
+* Get exposure to a Discord Library. I ended up picking JDA
 * Get more exposure to docker (I love docker) and more specifically in the context of how Spring Native uses it.
 * Get exposure to Java 21
 * Host this bot on a raspberry pi using Portainer (cheap self hosting)
@@ -23,11 +23,17 @@ This project is not complete, and as freetime allows I will add more functionali
 ### Techs Used
 Java 21, Spring Boot, Spring Native, Gradle, Docker, JDA, Discord, LavaPlayer
 
+### How To Build
+```
+gradle bootBuildImage
+```
+This should automatically connect with your local docker and build an image and container for you. 
+
 ### Lessons Learned
 * Spring Native is FAST!
-* JDA is a really neat library. Its amazing they can provide so much abstraction. Really everything you do to interact with discord via their REST API, but you never interact with RestTemplate or WebClient. They have clever solutions to blocking and non-blocking calls to the discord API
+* JDA is a really neat library. Its amazing they can provide so much abstraction. Really everything you do to interact with discord via their REST API, but you never interact with RestTemplate or WebClient. They have clever solutions for blocking and non-blocking calls to the discord API
 * Docker is fun. As always.
-* Gradle is slick. I like how less verbose is compared to maven.
+* Gradle is slick. I like how less verbose it is compared to maven.
 * The discord API has its limitations. I originally wanted to create shuffle functionality, but given how their API works, I'd have to parse an entire text channel and then randomly pick what I queried. This is incredibly time consuming and wasteful. Long term solutions would be to log that info in a database or use clever caching to drive shuffle behavior. That's out of scope for me for now.
 
 ### Disclaimers
