@@ -5,10 +5,12 @@ import net.dv8tion.jda.api.audio.AudioSendHandler;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import org.springframework.aot.hint.annotation.Reflective;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Reflective
 public class MusicHelper {
     public static final String MUSIC_RECS_VOICE_CHANNEL_ID = "1207505423486423090";
     private final AudioSendHandler audioSendingHandler;

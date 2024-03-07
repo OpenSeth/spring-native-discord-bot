@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import open.seth.springnativediscordbot.commands.SlashCommand;
 import open.seth.springnativediscordbot.listener.MessageListener;
 import open.seth.springnativediscordbot.listener.SlashCommandListener;
+import org.springframework.aot.hint.annotation.Reflective;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,12 +26,14 @@ import java.util.List;
  */
 @Configuration
 @RequiredArgsConstructor
+@Reflective
 public class JDAConfig {
     private final List<SlashCommand> slashCommands;
     private final SlashCommandListener slashCommandListener;
     private final MessageListener messageListener;
 
     @Bean
+    @Reflective
     public JDA jdaClient() {
         JDABuilder builder = JDABuilder.createDefault("");
         setCacheOptions(builder);

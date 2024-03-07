@@ -11,6 +11,7 @@ import open.seth.springnativediscordbot.audio.AudioLoadResultHandler;
 import open.seth.springnativediscordbot.audio.AudioScheduler;
 import open.seth.springnativediscordbot.commands.SlashCommand;
 import open.seth.springnativediscordbot.commands.music.recommendations.helper.MusicHelper;
+import org.springframework.aot.hint.annotation.Reflective;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -20,6 +21,7 @@ import static open.seth.springnativediscordbot.commands.constants.Constants.*;
 
 @Component
 @RequiredArgsConstructor
+@Reflective
 public class MusicRecommendationsRequest implements SlashCommand {
     private static final String URL = "url";
     private static final String ERROR_MISSING_OPTION = "Provide a url as an option in your request";

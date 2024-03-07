@@ -14,6 +14,7 @@ import open.seth.springnativediscordbot.audio.AudioScheduler;
 import open.seth.springnativediscordbot.commands.SlashCommand;
 import open.seth.springnativediscordbot.commands.music.recommendations.helper.MusicHelper;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.aot.hint.annotation.Reflective;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,7 @@ import static open.seth.springnativediscordbot.commands.constants.Constants.*;
 
 @Component
 @Slf4j
+@Reflective
 public class MusicRecommendations implements SlashCommand {
 
     private final AudioPlayerManager audioPlayerManager;

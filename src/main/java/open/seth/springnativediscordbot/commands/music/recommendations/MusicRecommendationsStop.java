@@ -4,12 +4,14 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import open.seth.springnativediscordbot.commands.SlashCommand;
+import org.springframework.aot.hint.annotation.Reflective;
 import org.springframework.stereotype.Component;
 
 import static open.seth.springnativediscordbot.commands.constants.Constants.*;
 
 @Component
 @RequiredArgsConstructor
+@Reflective
 public class MusicRecommendationsStop implements SlashCommand {
     private final AudioPlayer audioPlayer;
     @Override
