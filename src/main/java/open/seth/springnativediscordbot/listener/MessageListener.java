@@ -20,11 +20,8 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class MessageListener extends ListenerAdapter {
-    private final AudioPlayerManager audioPlayerManager;
-    private final AudioScheduler audioScheduler;
-    private final AudioPlayer audioPlayer;
-    private final AudioSendHandler audioSendingHandler;
 
+    //Listener that can receive all sorts of events in discord.
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
     }
